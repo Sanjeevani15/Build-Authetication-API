@@ -28,17 +28,21 @@ export default function Home() {
 		const {username,userType,email,password,phone}=user;
    		console.log(user);
 
-		// const res= await fetch("http://localhost:3000/user/signup",{
+		// const url = `http://localhost:3000/user/signup/?username={res.body.username}`
+		// const url = `http://localhost:3000/user/signup/?username=${username}&password=${password}&email=${email}&phone=${phone}&userType=${userType}`
+		// const res= await fetch(url,{
+		//const res= await fetch("http://localhost:3000/user/signup",{
 		const res= await fetch("/user/signup",{
 			mode: 'no-cors',
 			method:'POST',
 			headers:{	
 				"Content-Type":"application/json",
-				'Accept': 'application/json',
+				'Accept': 'application/json, text/plain, */*',
 				"Accept-Encoding":"gzip, deflate, br",
 				"Connection":"keep-alive",
 				"Access-Control-Allow-Origin" : "*", 
 				"Access-Control-Allow-Credentials" : true ,
+				
 			},
 			body:JSON.stringify({
 				username:username,
@@ -49,7 +53,9 @@ export default function Home() {
 			
 			})
 		})
-		res=> res.json()
+		// .then(res=>res.clone().json())
+		.then(res=>res.json())
+		// res=>res.json();
 		console.log(res);
 
 		const data=res;

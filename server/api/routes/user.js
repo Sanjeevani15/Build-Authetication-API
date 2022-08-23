@@ -7,11 +7,11 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt=require('jsonwebtoken');
 
-// router.get('/',(req,res,next)=>{
-//     res.status(200).json({
-//         message:'This route is working'
-//     })
-// })
+router.get('/',(req,res,next)=>{
+    res.status(200).json({
+        message:'This route is working'
+    })
+})
 
 
 
@@ -36,15 +36,17 @@ router.get('/',(req,res,next)=>{
 
 
 //code for sign up
-router.post('/signup',async(req,res,next)=>{
-    console.log("req is "+req);
+router.post('/signup',(req,res,next)=>{
+    console.log("req is "+ req);
 
-    bcrypt.hash(req.body.password, saltRounds,(err, hash)=>{
+    bcrypt.hash(req.body.password, saltRounds,(err,hash)=>{
         if(err){
             return res.status(400).json({
-                error:err
+                error:err,
+                msg:"error in bcrypting of password"
             })
         }
+
         else{
             const user=new User({
             _id: new mongoose.Types.ObjectId,      //this is predefined in mongoose
@@ -64,6 +66,8 @@ router.post('/signup',async(req,res,next)=>{
             console.log(err);
             res.status(500).json({
                 error:err,
+               
+
             })
         })
         }
@@ -117,7 +121,8 @@ router.post('/login',(req,res,next)=>{
     })
     .catch(err=>{
         res.status(500).json({
-            err:err
+            err:err,
+            msg:"something is working correctly"
         })
     })
 })

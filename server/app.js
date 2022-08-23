@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 app.use('/student',studentRoute);
 app.use('/faculty',facultyRoute);
-// app.use('/user',userRoute,req,res,next);
+app.use('/user',userRoute);
 
 // app.use((req,res,next)=>{
 //       //200 is a status code means okay
@@ -50,44 +50,44 @@ app.use('/faculty',facultyRoute);
 
 
 
-app.post('/user/signup',async(req,res,next)=>{
-    console.log(req);
-    bcrypt.hash(req.body.password, saltRounds,(err, hash)=>{
-        if(err){
-            return res.status(500).json({
-                error:err
-            })
-        }
-        else{
-            const user=new User({
-            _id: new mongoose.Types.ObjectId,      //this is predefined in mongoose
-            username : req.body.username,
-            password : hash,
-            phone:     req.body.phone,
-            email:     req.body.email,
-            userType:  req.body.userType
-            })
-        user.save()
-        .then(result=>{
-            res.status(200).json({
-                new_user:result
-            })
-        })
-        .catch(err=>{
-            console.log(err);
-            res.status(500).json({
-                error:err,
-            })
-        })
-        }
+// app.post('/user/signup',async(req,res,next)=>{
+//     console.log(req);
+//     bcrypt.hash(req.body.password, saltRounds,(err, hash)=>{
+//         if(err){
+//             return res.status(500).json({
+//                 error:err
+//             })
+//         }
+//         else{
+//             const user=new User({
+//             _id: new mongoose.Types.ObjectId,      //this is predefined in mongoose
+//             username : req.body.username,
+//             password : hash,
+//             phone:     req.body.phone,
+//             email:     req.body.email,
+//             userType:  req.body.userType
+//             })
+//         user.save()
+//         .then(result=>{
+//             res.status(200).json({
+//                 new_user:result
+//             })
+//         })
+//         .catch(err=>{
+//             console.log(err);
+//             res.status(500).json({
+//                 error:err,
+//             })
+//         })
+//         }
        
-    })
-})
+//     })
+// })
 
 
 app.use((req,res,next)=>{
     res.status(404).json({
-        error:'bad request: url not found'
+        error:'bad request: i think url not found'
     })
 })
 
