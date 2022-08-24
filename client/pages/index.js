@@ -22,28 +22,35 @@ export default function Home() {
 			setUser({...user,[name]:value})
 	}
 
-	const PostData=async(e)=>{
+	const postData=async(e)=>{
+		// async function postData()
 		e.preventDefault();
 
 		const {username,userType,email,password,phone}=user;
    		console.log(user);
 
-		// const url = `http://localhost:3000/user/signup/?username={res.body.username}`
-		// const url = `http://localhost:3000/user/signup/?username=${username}&password=${password}&email=${email}&phone=${phone}&userType=${userType}`
+		//const url = `http://localhost:3000/user/signup/?username={res.body.username}`
+	//const url = `http://localhost:3000/user/signup/?username=${username}&password=${password}&email=${email}&phone=${phone}&userType=${userType}`
 		// const res= await fetch(url,{
-		const res= await fetch("http://localhost:3000/user/signup",{
 		// const res= await fetch("/user/signup",{
+ 		//const res= await fetch(url,{
+
+		const res=await fetch("http://localhost:3000/user/signup",{
 			mode: 'no-cors',
 			method:'POST',
+			cache: 'no-cache',
+			credentials: 'include',
 			headers:{	
 				"Content-Type":"application/json",
-				'Accept': 'application/json, text/plain, */*',
+				"Accept": "application/json, text/plain, */*",
 				"Accept-Encoding":"gzip, deflate, br",
 				"Connection":"keep-alive",
 				"Access-Control-Allow-Origin" : "*", 
-				"Access-Control-Allow-Credentials" : true 
+				"Access-Control-Allow-Credentials" : true ,		
 		
 			},
+			redirect: 'follow', 
+			referrerPolicy: 'no-referrer',
 			body:JSON.stringify({
 				username:username,
 				userType:userType,
@@ -169,7 +176,7 @@ export default function Home() {
 							<div className="mb-6 text-center">
 								<button
 									className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-									type="button" onClick={PostData}
+									type="button" onClick={postData}
 								>
 									Create Account
 								</button>

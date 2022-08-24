@@ -1871,6 +1871,11 @@
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
 
+"tailwindcss-unsplash@^1.1.1":
+  "integrity" "sha512-uly9LFbDW5ZR/Hkq0+pZoVwu2Hvv+9rXEZjtf9Qt3e6r0/tJFKhqVHQl6zI3i2jVpsDjyBflW+F6Cn/zPkFxSw=="
+  "resolved" "https://registry.npmjs.org/tailwindcss-unsplash/-/tailwindcss-unsplash-1.1.1.tgz"
+  "version" "1.1.1"
+
 "tailwindcss@^3.1.8":
   "integrity" "sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.1.8.tgz"
